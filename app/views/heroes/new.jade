@@ -1,0 +1,23 @@
+extends ../shared/template
+
+block content
+  h1 Create Your Hero
+
+  form(method='POST', action='/heroes')
+    input(name='name', type='text', placeholder='name')
+    select(name='head')
+      option Iron Man
+      option Captain America
+      option Deadpool
+      option Wolverine
+    select(name='bod')
+      option Iron Man
+      option Captain America
+      option Deadpool
+      option Wolverine
+    select(name='legs')
+      option Iron Man
+      option Captain America
+      option Deadpool
+      option Wolverine
+    button Create!

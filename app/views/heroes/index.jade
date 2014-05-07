@@ -1,0 +1,33 @@
+extends ../shared/template
+
+block content
+  h1 Heroes
+
+  button
+    a(href='/heroes/new') Create A New Hero!
+
+  form(method='POST', action='/heroes')
+    select(name='armor')
+      option Iron Man
+      option Captain America
+      option Wolverine
+      option Deadpool
+    select(name='position')
+      option head
+      option body
+      option legs
+    button Find
+
+  #heroes
+    each hero in heroes
+      #hero
+        .name
+          a(href='/heroes/#{hero._id}')= hero.name
+
+        .heroHead(style='background-image: url(/img/#{hero.photoHead})')
+        .heroBod(style='background-image: url(/img/#{hero.photoBod})')
+        .heroLegs(style='background-image: url(/img/#{hero.photoLegs})')
+
+        .delete
+          form(action='/heroes/#{hero._id}/delete', method='POST')
+            button DELETE
