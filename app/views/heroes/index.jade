@@ -1,10 +1,9 @@
 extends ../shared/template
 
 block content
-  h1 Heroes
 
-  button
-    a(href='/heroes/new') Create A New Hero!
+  .create
+    a.createClick(href='/heroes/new') Create A Hero!
 
   form(method='POST', action='/heroes')
     select(name='armor')
@@ -20,9 +19,9 @@ block content
 
   #heroes
     each hero in heroes
-      #hero
+      #hero(style='background-image: url(/img/#{hero.photoBanner})')
         .name
-          a(href='/heroes/#{hero._id}')= hero.name
+          a.heroName(href='/heroes/#{hero._id}')= hero.name
 
         .heroHead(style='background-image: url(/img/#{hero.photoHead})')
         .heroBod(style='background-image: url(/img/#{hero.photoBod})')
@@ -30,4 +29,4 @@ block content
 
         .delete
           form(action='/heroes/#{hero._id}/delete', method='POST')
-            button DELETE
+            button#delete DELETE

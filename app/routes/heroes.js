@@ -76,6 +76,7 @@ exports.create = (req, res)=>{
   var photoHead;
   var photoBod;
   var photoLegs;
+  var photoBanner;
 
   switch(req.body.head){
     case 'Captain America':
@@ -92,7 +93,7 @@ exports.create = (req, res)=>{
   }
 
   switch(req.body.bod){
-  case 'Captain America':
+    case 'Captain America':
       photoBod = 'cap_bod.png';
       break;
     case 'Deadpool':
@@ -106,7 +107,7 @@ exports.create = (req, res)=>{
   }
 
   switch(req.body.legs){
-  case 'Captain America':
+    case 'Captain America':
       photoLegs = 'cap_legs.png';
       break;
     case 'Deadpool':
@@ -119,21 +120,30 @@ exports.create = (req, res)=>{
       photoLegs = 'logan_legs.png';
   }
 
+  switch(req.body.banner){
+    case 'Captain America':
+      photoBanner = 'cap_banner.png';
+      break;
+    case 'Deadpool':
+      photoBanner = 'dp_banner.png';
+      break;
+    case 'Iron Man':
+      photoBanner = 'stark_banner.png';
+      break;
+    case 'Wolverine':
+      photoBanner = 'logan_banner.png';
+  }
+
   var heroes = global.nss.db.collection('heroes');
 
   req.body.photoHead = photoHead;
-    heroes.save(req.body, (err, obj)=>{
-      res.redirect(`/heroes/${obj._id}`);
-    });
-
   req.body.photoBod = photoBod;
-    heroes.save(req.body, (err, obj)=>{
-      res.redirect(`/heroes/${obj._id}`);
-    });
-
   req.body.photoLegs = photoLegs;
-    heroes.save(req.body, (err, obj)=>{
-      res.redirect(`/heroes/${obj._id}`);
-    });
+  req.body.photoBanner = photoBanner;
 
+  console.log(photoBanner);
+
+  heroes.save(req.body, (err, obj)=>{
+    res.redirect(`/heroes/${obj._id}`);
+  });
 };

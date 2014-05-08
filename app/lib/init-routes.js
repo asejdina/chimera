@@ -23,7 +23,7 @@ function load(app, fn){
   app.get('/heroes/new', heroes.new);
   app.get('/heroes/:id', heroes.show);
   app.post('/heroes', heroes.create);
-  app.get('/heroes', heroes.sort);
+  // app.get('/heroes', heroes.sort);
   app.post('/heroes/:id/delete', heroes.destroy);
   console.log('Routes Loaded');
   fn();
