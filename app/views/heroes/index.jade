@@ -4,18 +4,18 @@ block content
 
   .create
     a.createClick(href='/heroes/new') Create A Hero!
-
-  form(method='POST', action='/heroes')
-    select(name='armor')
-      option Iron Man
-      option Captain America
-      option Wolverine
-      option Deadpool
-    select(name='position')
-      option head
-      option body
-      option legs
-    button Find
+  //- 
+  //- form(method='POST', action='/heroes')
+  //-   select(name='armor')
+  //-     option Iron Man
+  //-     option Captain America
+  //-     option Wolverine
+  //-     option Deadpool
+  //-   select(name='position')
+  //-     option head
+  //-     option body
+  //-     option legs
+  //-   button Filter
 
   #heroes
     each hero in heroes

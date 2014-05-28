@@ -36,36 +36,11 @@ exports.destroy = (req, res)=>{
 
 
 // exports.sort = (req, res)=>{
-//   var head;
-//   var bod;
-//   var legs;
-//
-//   switch(req.query.position){
-//     case 'head':
-//       head = heroes.photoHead;
-//       break;
-//     case 'body':
-//       bod = heroes.photoBod;
-//       break;
-//     case 'legs':
-//       legs = heroes.photoLegs;
-//   }
-//
-//   switch(req.query.armor){
-//     case 'Iron Man':
-//       break;
-//     case 'Captain America':
-//       break;
-//     case 'Deadpool':
-//       break;
-//     case 'Wolverine':
-//       break;
-//   }
-//
 //   var heroes = global.nss.db.collection('heroes');
-// //
-// // head.substring(0,1)
-// //
+//   var heroObj = {};
+//
+//
+//
 //
 // };
 //
@@ -134,14 +109,13 @@ exports.create = (req, res)=>{
       photoBanner = 'logan_banner.png';
   }
 
+
   var heroes = global.nss.db.collection('heroes');
 
   req.body.photoHead = photoHead;
   req.body.photoBod = photoBod;
   req.body.photoLegs = photoLegs;
   req.body.photoBanner = photoBanner;
-
-  console.log(photoBanner);
 
   heroes.save(req.body, (err, obj)=>{
     res.redirect(`/heroes/${obj._id}`);
